@@ -13,15 +13,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Login to GitHub Container Registry
+      - name: Login to Altacee Container Registry
         uses: docker/login-action@v1
         with:
-          registry: ghcr.io
+          registry: acr.altacee.com
           username: rahulvk007
-          password: ${{ secrets.KEY }}
+          password: ${{ secrets.ACR }}
 
       - name: Build the hello-docker Docker image
-        run: docker build . -t ghcr.io/rahulvk007/rvk-nginxproxymanager:latest
+        run: docker build . -t acr.altacee.com/rahulvk007/rvk-nginxproxymanager:latest
 
-      - name: Push the Docker image to GitHub Container Registry
-        run: docker push ghcr.io/rahulvk007/rvk-nginxproxymanager:latest
+      - name: Push the Docker image to Altacee Container Registry
+        run: docker push acr.altacee.com/rahulvk007/rvk-nginxproxymanager:latest
